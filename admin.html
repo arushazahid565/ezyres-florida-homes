@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - View Deals Database</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="src/supabase-config.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fa;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            background: linear-gradient(135deg, #2c7a4d 0%, #ffc107 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #2c7a4d;
+        }
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .filters input, .filters select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+        }
+        table {
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 700;
+            color: #2c7a4d;
+        }
+        tr:hover {
+            background: #f9f9f9;
+        }
+        .status-pending {
+            background: #ffc107;
+            color: #000;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .status-approved {
+            background: #2c7a4d;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .refresh-btn {
+            background: #2c7a4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-database"></i> Deals Database Admin Panel</h1>
+            <p>View and manage all submitted deals</p>
+        </div>
+        
+        <div class="stats-grid" id="statsGrid">
+            <!-- Stats will load here -->
+        </div>
+        
+        <button class="refresh-btn" onclick="loadDeals()">
+            <i class="fas fa-sync-alt"></i> Refresh Data
+        </button>
+        
+        <div class="filters">
+            <input type="text" id="searchInput" placeholder="Search by address..." onkeyup="filterTable()">
+            <select id="typeFilter" onchange="filterTable()">
+                <option value="">All Types</option>
+                <option value="buy_price">Buy Price Requests</option>
+                <option value="submit_deal">Submit Deal</option>
+            </select>
+            <select id="statusFilter" onchange="filterTable()">
+                <option value="">All Status</option>
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+            </select>
+        </div>
+        
+        <div style="overflow-x: auto;">
+            <table id="dealsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Address</th>
+                        <th>Asking Price</th>
+                        <th>Land Value</th>
+                        <th>New Build Value</th>
+                        <th>Strategy</th>
+                        <th>Status</th>
+                        <th>Submitted</th>
+                    </tr>
+                </thead>
+                <tbody id="dealsTableBody">
+                    <tr><td colspan="9" style="text-align: center;">Loading deals...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let allDeals = [];
+        
+        async function loadDeals() {
+            try {
+                const { data, error } = await window.supabaseClient
+                    .from('deals')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+                
+                if (error) throw error;
+                
+                allDeals = data;
+                displayDeals(allDeals);
+                updateStats(allDeals);
+            } catch (error) {
+                console.error('Error loading deals:', error);
+                document.getElementById('dealsTableBody').innerHTML = '<tr><td colspan="9" style="text-align: center; color: red;">Error loading deals: ' + error.message + '</td></tr>';
+            }
+        }
+        
+        function displayDeals(deals) {
+            const tbody = document.getElementById('dealsTableBody');
+            if (!deals.length) {
+                tbody.innerHTML = '<tr><td colspan="9" style="text-align: center;">No deals found</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = deals.map(deal => `
+                <tr>
+                    <td>${deal.id}</td>
+                    <td><span class="status-${deal.deal_type === 'buy_price' ? 'pending' : 'approved'}">${deal.deal_type === 'buy_price' ? '💰 Buy Price' : '📝 Submit Deal'}</span></td>
+                    <td>${deal.property_address}</td>
+                    <td>$${Number(deal.asking_price).toLocaleString()}</td>
+                    <td>$${Number(deal.land_value).toLocaleString()}</td>
+                    <td>${deal.new_build_value ? '$' + Number(deal.new_build_value).toLocaleString() : '-'}</td>
+                    <td>${deal.strategy}</td>
+                    <td><span class="status-${deal.status}">${deal.status.toUpperCase()}</span></td>
+                    <td>${new Date(deal.created_at).toLocaleString()}</td>
+                </tr>
+            `).join('');
+        }
+        
+        function updateStats(deals) {
+            const totalDeals = deals.length;
+            const buyPriceCount = deals.filter(d => d.deal_type === 'buy_price').length;
+            const submitDealCount = deals.filter(d => d.deal_type === 'submit_deal').length;
+            const pendingCount = deals.filter(d => d.status === 'pending').length;
+            const totalValue = deals.reduce((sum, d) => sum + Number(d.asking_price), 0);
+            
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${totalDeals}</div>
+                    <div>Total Deals</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${buyPriceCount}</div>
+                    <div>Buy Price Requests</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${submitDealCount}</div>
+                    <div>Submit Deal</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${pendingCount}</div>
+                    <div>Pending Review</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$${(totalValue / 1000000).toFixed(1)}M</div>
+                    <div>Total Value</div>
+                </div>
+            `;
+        }
+        
+        function filterTable() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const typeFilter = document.getElementById('typeFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            
+            const filtered = allDeals.filter(deal => {
+                const matchesSearch = deal.property_address.toLowerCase().includes(searchTerm);
+                const matchesType = !typeFilter || deal.deal_type === typeFilter;
+                const matchesStatus = !statusFilter || deal.status === statusFilter;
+                return matchesSearch && matchesType && matchesStatus;
+            });
+            
+            displayDeals(filtered);
+        }
+        
+        // Load deals on page load
+        window.addEventListener('load', loadDeals);
+    </script>
+</body>
+</html>
