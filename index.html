@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>We Buy Homes in Florida | Instant Buy Price Estimation</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="top-container">
+        <div class="center-logo">
+            <i class="fas fa-home home-icon"></i>
+            <div class="ezyres-title">EzyRes</div>
+        </div>
+        <div class="right-bulb">
+            <div class="bulb-container" id="tutorialBtn">
+                <div class="green-bulb">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="bulb-text">How to use our portal</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div id="mainContent">
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>We Buy Homes in <span>Florida</span></h1>
+            <p>Instantly Check if Your Deal Works for Us Below</p>
+            <div class="btn-group">
+                <button class="btn-primary" id="openRequestModalBtn">
+                    <i class="fas fa-calculator"></i> Request a Buy Price
+                </button>
+                <button class="btn-outline" id="openSubmitModalBtn">
+                    <i class="fas fa-file-signature"></i> Submit a Deal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-container">
+        <div class="stats-grid">
+            <div class="stat-item"><div class="stat-number">$250M+</div><div class="stat-label">Deals Closed</div></div>
+            <div class="stat-item"><div class="stat-number">24h</div><div class="stat-label">Official Offer</div></div>
+            <div class="stat-item"><div class="stat-number">7-14</div><div class="stat-label">Days to Close</div></div>
+            <div class="stat-item"><div class="stat-number">85%</div><div class="stat-label">ARV Buy Range</div></div>
+        </div>
+    </div>
+
+    <!-- Single Image Section with Center Counter -->
+    <div class="image-section">
+        <div class="image-container">
+            <img class="single-image" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=500&fit=crop" alt="Florida Luxury Home">
+            <div class="image-overlay"><h3>Premium Florida Properties</h3><p>Luxury homes, fix & flip opportunities, and investment properties across Florida</p></div>
+            <div class="center-counter">
+                <div class="counter-number" id="dealsCounter">0</div>
+                <div class="counter-label">DEALS CLOSED</div>
+                <div class="counter-sub">and counting...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="container">
+        <div class="howit-section">
+            <h2 class="section-title">How It Works</h2>
+            <div class="two-columns">
+                <div class="card">
+                    <div class="card-header"><i class="fas fa-chart-line"></i><h2>Request a Buy Price</h2></div>
+                    <div class="step"><span class="step-number">1</span><h3>CLICK BUTTON</h3><p>Click "Request a Buy Price" to open the form.</p></div>
+                    <div class="step"><span class="step-number">2</span><h3>FILL DETAILS</h3><p>Enter property address, asking price, land value, and strategy.</p></div>
+                    <div class="step"><span class="step-number">3</span><h3>GET OFFER</h3><p>Receive official offer within 24 hours.</p></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><i class="fas fa-handshake"></i><h2>Submit a Deal</h2></div>
+                    <div class="step"><span class="step-number">1</span><h3>CLICK BUTTON</h3><p>Click "Submit a Deal" to open the land deal form.</p></div>
+                    <div class="step"><span class="step-number">2</span><h3>ENTER DETAILS</h3><p>Fill land address, asking price, land value, and strategy.</p></div>
+                    <div class="step"><span class="step-number">3</span><h3>GET OFFER</h3><p>Receive official offer within 24 hours.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <div class="container"><h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question">I just submitted a deal - what's next? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Our acquisitions team reviews within 24 hours. You'll receive a call or email with official offer & next steps.</div></div>
+                <div class="faq-item"><div class="faq-question">What kind of land deals do you accept? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">We accept Tear Down and Land Play, land development, lot splits, and new construction opportunities across Florida.</div></div>
+                <div class="faq-item"><div class="faq-question">What markets are you in? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">All major Florida metros: Tampa, Orlando, Miami, Jacksonville, Fort Lauderdale, and surrounding areas.</div></div>
+                <div class="faq-item"><div class="faq-question">How quickly can you close? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">As fast as 7-14 days depending on title and due diligence.</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer"><div class="container"><p>© 2025 We Buy Homes in Florida — Instant Buy Price Estimation. All rights reserved.</p><p>*Preliminary offers are algorithmic estimates. Official offer after full underwriting.</p></div></div>
+</div>
+
+<!-- Contact Page -->
+<div id="contactPage" style="display: none;">
+    <div class="contact-page">
+        <div class="contact-card">
+            <div class="contact-heading">✨ Your buy price has been calculated successfully...</div>
+            <div class="contact-subhead">Before we proceed how do we get in contact with you?</div>
+            <form id="contactDetailsForm">
+                <div class="contact-form">
+                    <div class="contact-row">
+                        <div class="contact-field">
+                            <label><i class="fas fa-user"></i> First Name *</label>
+                            <input type="text" id="contactFirstName" placeholder="Enter first name" required>
+                        </div>
+                        <div class="contact-field">
+                            <label><i class="fas fa-user-tag"></i> Last Name *</label>
+                            <input type="text" id="contactLastName" placeholder="Enter last name" required>
+                        </div>
+                    </div>
+                    <div class="contact-field">
+                        <label><i class="fas fa-envelope"></i> Email Address *</label>
+                        <input type="email" id="contactEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="contact-field">
+                        <label><i class="fas fa-phone-alt"></i> Phone Number *</label>
+                        <input type="tel" id="contactPhone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="contact-field">
+                        <label><i class="fas fa-pen-alt"></i> Notes (Optional)</label>
+                        <textarea rows="3" id="contactNotes" placeholder="Any additional details about your property..."></textarea>
+                    </div>
+                </div>
+                <div class="contact-buttons">
+                    <button type="button" id="backToHomeFromContactBtn" class="btn-contact-back"><i class="fas fa-arrow-left"></i> Back to Home</button>
+                    <button type="submit" class="btn-contact-proceed"><i class="fas fa-check-circle"></i> Proceed</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Terms & Conditions Page -->
+<div id="termsPage" style="display: none;">
+    <div class="terms-page">
+        <div class="terms-card">
+            <div class="terms-header">
+                <h2><i class="fas fa-file-contract"></i> Agreement Terms</h2>
+                <p>Please review and accept the following terms to proceed</p>
+            </div>
+            <div class="terms-list">
+                <div class="term-item">
+                    <label class="term-checkbox">
+                        <input type="checkbox" id="term1" class="term-check">
+                        <div class="term-content">
+                            <div class="term-title">72 Business Hours Exclusivity</div>
+                            <div class="term-description">
+                                Grant EzyRes an exclusive right to sell the property effective for a duration of <strong>seventy-two (72) business hours</strong> AFTER providing fully executed A-B contract and access to the underlying property if I can get it under contract within <strong>$20,000</strong> of the buy price given from EzyRes.
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="term-item">
+                    <label class="term-checkbox">
+                        <input type="checkbox" id="term2" class="term-check">
+                        <div class="term-content">
+                            <div class="term-title">Joint Venture (JV) Agreement</div>
+                            <div class="term-description">
+                                Should I find the buyer <strong>NOT through EzyRes</strong> during the 72 business hours exclusivity, I still agree to JV with EzyRes at <strong>50%/50% split</strong>.
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="term-item">
+                    <label class="term-checkbox">
+                        <input type="checkbox" id="term3" class="term-check">
+                        <div class="term-content">
+                            <div class="term-title">50%/50% Split Agreement</div>
+                            <div class="term-description">
+                                Whether the property is sold by EzyRes or by me during the 72 business hours exclusivity period, I agree to <strong>50%/50% split</strong> of the total assignment fee.
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="terms-buttons">
+                <button type="button" id="backToContactFromTermsBtn" class="btn-terms-back"><i class="fas fa-arrow-left"></i> Back</button>
+                <button type="button" id="proceedFromTermsBtn" class="btn-terms-proceed" disabled><i class="fas fa-check-circle"></i> Accept & Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Amount Range Page -->
+<div id="amountPage" style="display: none;">
+    <div class="amount-page">
+        <div class="amount-card">
+            <div class="amount-header">
+                <h2><i class="fas fa-chart-line"></i> Estimated Offer Range</h2>
+                <p>Based on your property details and our analysis</p>
+            </div>
+            <div class="amount-range">
+                <div class="amount-min">
+                    Minimum Offer
+                    <span id="minAmount">$0</span>
+                </div>
+                <div class="amount-divider">— to —</div>
+                <div class="amount-max">
+                    Maximum Offer
+                    <span id="maxAmount">$0</span>
+                </div>
+            </div>
+            <p style="color: #6c757d; font-size: 0.85rem; margin-top: 20px;">
+                <i class="fas fa-info-circle"></i> Final offer will be determined after full underwriting and property inspection
+            </p>
+            <div class="amount-buttons">
+                <button type="button" id="downloadPDFBtn" class="btn-pdf"><i class="fas fa-file-pdf"></i> Download PDF Offer</button>
+                <button type="button" id="backToHomeFromAmountBtn" class="btn-amount-home"><i class="fas fa-home"></i> Back to Home</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 1: REQUEST A BUY PRICE FORM -->
+<div id="requestModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <div class="modal-logo">
+                <i class="fas fa-home home-icon"></i>
+                <h3>EzyRes · Buy Price Estimator</h3>
+            </div>
+            <div class="close-modal" id="closeRequestModal">&times;</div>
+        </div>
+        <div class="modal-bulb">
+            <div class="bulb-icon"><i class="fas fa-lightbulb"></i></div>
+            <span>⚡ Instant range + official offer within 24h</span>
+        </div>
+        
+        <form id="requestPriceFormModal">
+            <div class="modal-form-grid">
+                <div class="modal-input-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Property Address *</label>
+                    <input type="text" id="modalAddress" placeholder="Enter land address" required>
+                </div>
+                <div class="modal-input-group">
+                    <label><i class="fas fa-dollar-sign"></i> Enter Your Asking Price *</label>
+                    <input type="text" id="modalArv" placeholder="Enter your asking price" required>
+                </div>
+                <div class="modal-input-group">
+                    <label><i class="fas fa-chart-line"></i> Estimated Land Value *</label>
+                    <input type="text" id="modalRepairs" placeholder="Estimated land value" required>
+                </div>
+                <div class="modal-input-group">
+                    <label><i class="fas fa-building"></i> Estimated New Build Value</label>
+                    <input type="text" id="modalPropType" placeholder="Estimated new build value">
+                </div>
+            </div>
+            <div class="modal-input-group full-width-modal">
+                <label><i class="fas fa-chart-pie"></i> Select a Strategy *</label>
+                <select id="modalStrategySelect" required>
+                    <option value="" disabled selected>-- Select a strategy --</option>
+                    <option value="Tear Down and Land Play">🏚️ Tear Down and Land Play</option>
+                    <option value="Land Development">🌱 Land Development</option>
+                    <option value="Fix and Flip">🔨 Fix and Flip</option>
+                    <option value="New Construction">🏗️ New Construction</option>
+                    <option value="Lot Split / Subdivision">📐 Lot Split / Subdivision</option>
+                </select>
+            </div>
+            
+            <div class="modal-buttons">
+                <button type="button" id="buyToHomeRequest" class="btn-modal-green">
+                    <i class="fas fa-home"></i> Buy to Home
+                </button>
+                <button type="submit" class="btn-modal-green">
+                    <i class="fas fa-calculator"></i> Request a Buy Price
+                </button>
+            </div>
+            <div class="modal-footer-note">
+                * Our team will review your submission and get back to you within 24 hours.
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL 2: SUBMIT A DEAL FORM -->
+<div id="submitModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <div class="modal-logo">
+                <i class="fas fa-handshake home-icon"></i>
+                <h3>EzyRes · Submit Land Deal</h3>
+            </div>
+            <div class="close-modal" id="closeSubmitModal">&times;</div>
+        </div>
+        <div class="modal-bulb">
+            <div class="bulb-icon"><i class="fas fa-lightbulb"></i></div>
+            <span>🏗️ Land deals, tear downs & new construction</span>
+        </div>
+        
+        <form id="submitDealFormModal">
+            <div class="modal-form-grid">
+                <div class="modal-input-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Property Address *</label>
+                    <input type="text" id="modalLandAddress" placeholder="Enter land address" required>
+                </div>
+                <div class="modal-input-group">
+                    <label><i class="fas fa-dollar-sign"></i> Enter Your Asking Price *</label>
+                    <input type="text" id="modalAskingPrice" placeholder="Enter your asking price" required>
+                </div>
+                <div class="modal-input-group">
+                    <label><i class="fas fa-chart-line"></i> Estimated Land Value *</label>
+                    <input type="text" id="modalLandValue" placeholder="Estimated land value" required>
+                </div>
+                <div class="modal-input-group">
+                    <label><i class="fas fa-building"></i> Estimated New Build Value</label>
+                    <input type="text" id="modalNewBuildValue" placeholder="Estimated new build value">
+                </div>
+            </div>
+            <div class="modal-input-group full-width-modal">
+                <label><i class="fas fa-chart-pie"></i> Select a Strategy *</label>
+                <select id="modalStrategy" required>
+                    <option value="" disabled selected>-- Select a strategy --</option>
+                    <option value="Tear Down and Land Play">🏚️ Tear Down and Land Play</option>
+                    <option value="Land Development">🌱 Land Development</option>
+                    <option value="Fix and Flip">🔨 Fix and Flip</option>
+                    <option value="New Construction">🏗️ New Construction</option>
+                    <option value="Lot Split / Subdivision">📐 Lot Split / Subdivision</option>
+                </select>
+            </div>
+            
+            <div class="modal-buttons">
+                <button type="button" id="buyToHomeSubmit" class="btn-modal-green">
+                    <i class="fas fa-home"></i> Buy to Home
+                </button>
+                <button type="submit" class="btn-modal-green">
+                    <i class="fas fa-paper-plane"></i> Submit a Deal
+                </button>
+            </div>
+            <div class="modal-footer-note">
+                * Our team will review your submission and get back to you within 24 hours.
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Tutorial Modal -->
+<div id="tutorialModal" class="tutorial-modal">
+    <div class="tutorial-content">
+        <span class="close-modal-x" id="closeTutorial">&times;</span>
+        <div class="tutorial-header"><h2><i class="fas fa-graduation-cap"></i> EzyRes Deals Portal Tutorial</h2></div>
+        <div class="tutorial-center"><p>Choose which tutorial you'd like to watch:</p><div class="tutorial-buttons"><button class="tutorial-btn" id="requestTutorialBtn"><i class="fas fa-calculator"></i> Request a Buy Price Tutorial</button><button class="tutorial-btn" id="submitTutorialBtn"><i class="fas fa-file-signature"></i> Submit a Deal Tutorial</button></div></div>
+    </div>
+</div>
+
+<div id="warningOverlay" class="warning-overlay">
+    <div class="warning-box">
+        <div class="warning-header">
+            <div class="warning-icon-big">⚠️</div>
+            <h2 class="warning-title">We Found Some Issues</h2>
+            <p class="warning-subtitle">Your submission has the following problems:</p>
+        </div>
+        <div id="warningIssuesList" class="warning-issues-list"></div>
+        <div class="warning-actions">
+            <button id="warningGoBackBtn" class="btn-warning-back"><i class="fas fa-arrow-left"></i> Go Back & Fix</button>
+            <button id="warningSubmitAnywayBtn" class="btn-warning-submit"><i class="fas fa-paper-plane"></i> Submit Anyway</button>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="supabase-config.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
